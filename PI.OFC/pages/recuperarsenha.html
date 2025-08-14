@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recuperação de Senha</title>
+  <link rel="icon" type="image/png" href="../img_logos/Logo Aqua Limpa.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- 🌟 CSS Profissional -->
+  <style>
+    /* Campo de entrada refinado */
+    .input-field {
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .input-field:focus {
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Botão principal */
+    .btn-primary {
+      background-color: #4f46e5;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #4338ca;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Card com sombra elegante */
+    .card {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e5e7eb;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Dark mode opcional */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1f2937;
+        color: #f9fafb;
+      }
+
+      .card {
+        background-color: #111827;
+        border-color: #374151;
+      }
+
+      .input-field {
+        background-color: #1f2937;
+        color: #f9fafb;
+        border-color: #4b5563;
+      }
+
+      .btn-primary {
+        background-color: #6366f1;
+      }
+
+      .btn-primary:hover {
+        background-color: #818cf8;
+      }
+
+      #successMessage {
+        background-color: #064e3b;
+        color: #d1fae5;
+      }
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
+  <div class="w-full max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="rounded-xl overflow-hidden card bg-white p-8 md:p-12">
+      <!-- Botão Voltar -->
+      <button onclick="window.history.back()" class="text-indigo-700 hover:text-indigo-900 mb-6 flex items-center transition-colors" aria-label="Voltar">
+        <i class="fas fa-arrow-left mr-2"></i>
+        <span>Voltar</span>
+      </button>
+
+      <!-- Cabeçalho -->
+      <div class="text-center mb-8">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Recupere sua senha</h1>
+        <p class="text-gray-600 text-sm sm:text-base">Insira seu e-mail para receber as instruções de redefinição de senha.</p>
+      </div>
+
+      <!-- Formulário -->
+      <form id="recoveryForm" class="space-y-6">
+        <div class="space-y-1">
+          <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 input-field focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="seu@email.com"
+          />
+          <p class="text-xs text-gray-500 mt-1">Enviaremos um link para redefinir sua senha</p>
+        </div>
+
+        <button type="submit" class="w-full py-3 px-4 rounded-lg text-white font-medium btn-primary text-sm sm:text-base">
+          Enviar instruções
+        </button>
+      </form>
+
+      <!-- Mensagem de sucesso -->
+      <div id="successMessage" role="alert" class="hidden mt-6 p-4 bg-green-50 rounded-lg text-sm sm:text-base">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <i class="fas fa-check-circle text-green-500"></i>
+          </div>
+          <div class="ml-3">
+            <p class="font-medium text-green-800">
+              Enviamos um e-mail com instruções para redefinir sua senha. Verifique sua caixa de entrada.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Link de reenviar -->
+      <div class="mt-8 text-center text-sm text-gray-500">
+        <p>
+          Não recebeu o e-mail?
+          <button id="resendBtn" class="text-indigo-600 hover:text-indigo-800 font-medium" aria-label="Reenviar instruções">
+            Clique para reenviar
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="mt-6 text-center text-xs text-gray-500">
+      <p>© 2025 Aqua Limpa. Todos os direitos reservados.</p>
+    </div>
+  </div>
+
+  <!-- Script JS (opcional para funcionalidade futura) -->
+  <script>
+    // Exemplo de exibição da mensagem de sucesso
+    document.getElementById("recoveryForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("successMessage").classList.remove("hidden");
+    });
+
+    document.getElementById("resendBtn").addEventListener("click", function () {
+      alert("Instruções reenviadas para seu e-mail.");
+    });
+  </script>
+</body>
+</html>
